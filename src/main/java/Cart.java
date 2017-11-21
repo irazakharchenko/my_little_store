@@ -4,7 +4,6 @@ import java.util.ArrayList;
 public class Cart {
 
     private ArrayList<ComputerGame> games = new ArrayList<ComputerGame>();
-
     private PaymentStrategy paymentStrategy;
     private DeliveryStrategy deliveryStrategy;
     private boolean isCash;
@@ -36,11 +35,16 @@ public class Cart {
 
     public Cart(){}
 
+    public Cart(ArrayList<ComputerGame> games, DeliveryStrategy deliveryStrategy, boolean isCash) {
+
+        setGames(games);
+        setDeliveryStrategy(deliveryStrategy);
+        this.isCash = isCash;
+    }
 
     public void addGame(ComputerGame game) {
 
         games.add(game);
-
 
     }
     public double computeTotalPrice(){
