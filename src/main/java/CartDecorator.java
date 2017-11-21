@@ -18,12 +18,10 @@ public class CartDecorator extends Cart {
 
     @Override
     public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
-
         cartToDecorate.setPaymentStrategy(paymentStrategy);
     }
     @Override
     public void setDeliveryStrategy(DeliveryStrategy deliveryStrategy) {
-
         cartToDecorate.setDeliveryStrategy(deliveryStrategy);
     }
 
@@ -51,11 +49,11 @@ public class CartDecorator extends Cart {
 
     @Override
     public ArrayList<ComputerGame> getGames() {
-        return cartToDecorate.getGames();
+        return this.cartToDecorate.getGames();
     }
     @Override
     public void setGames(ArrayList<ComputerGame> games) {
-        cartToDecorate.setGames(games);
+        this.cartToDecorate.setGames(games);
     }
 
 
