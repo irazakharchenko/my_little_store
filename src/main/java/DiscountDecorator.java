@@ -1,20 +1,12 @@
 public class DiscountDecorator extends CartDecorator{
-    private CartDecorator cd;
 
 
-    public CartDecorator getCd() {
-        return cd;
-    }
-
-
-
-
-    public DiscountDecorator(Cart cart){
-        super(cart);
+    public DiscountDecorator(Cart c) {
+        super(c);
     }
 
     @Override
     public double computeTotalPrice(){
-        return cd.computeTotalPrice()* 0.95;
+        return this.getCartToDecorate().computeTotalPrice() * 0.90;
     }
 }

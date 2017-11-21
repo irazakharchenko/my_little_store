@@ -8,8 +8,8 @@ public class BonusDecorator extends CartDecorator{
 
     @Override
     public boolean ship(){
-
-            return addBonus();
+        addBonus();
+        return getCartToDecorate().ship();
 
 
     }

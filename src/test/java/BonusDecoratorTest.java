@@ -13,7 +13,7 @@ public class BonusDecoratorTest {
     ArrayList<Genres> genres = new ArrayList<>(), genres1 = new ArrayList<>();
     private BonusDecorator bd ;
     private CartDecorator cd;
-    private DiscountCart discountCart;
+    private DiscountDecorator discountDecorator;
     @Before
     public void initializationOfObject(){
 
@@ -28,7 +28,7 @@ public class BonusDecoratorTest {
         bd = new BonusDecorator(cart);
         cd = new CartDecorator(cart1);
         cd.addGame(cg1);
-        discountCart = new DiscountCart(cart);
+        discountDecorator = new DiscountDecorator(cart);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class BonusDecoratorTest {
         assertEquals(true, cd.getDeliveryStrategy().deliver(cd.getGames()));
         assertEquals("Nova poshta", cd.getDeliveryStrategy().toString());
         //
-        assertEquals(17.64, discountCart.computeTotalPrice(),0.04);
+        assertEquals(17.64, discountDecorator.computeTotalPrice(),0.04);
 
     }
 
