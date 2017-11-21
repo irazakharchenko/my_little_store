@@ -6,7 +6,7 @@ public class Cart {
     private ArrayList<ComputerGame> games = new ArrayList<ComputerGame>();
     private PaymentStrategy paymentStrategy;
     private DeliveryStrategy deliveryStrategy;
-    private boolean isCash;
+
 
     public ArrayList<ComputerGame> getGames() {
         return games;
@@ -35,11 +35,10 @@ public class Cart {
 
     public Cart(){}
 
-    public Cart(ArrayList<ComputerGame> games, DeliveryStrategy deliveryStrategy, boolean isCash) {
-
+    public Cart(ArrayList<ComputerGame> games, DeliveryStrategy deliveryStrategy, PaymentStrategy paySt) {
         setGames(games);
         setDeliveryStrategy(deliveryStrategy);
-        this.isCash = isCash;
+        setPaymentStrategy(paySt);
     }
 
     public void addGame(ComputerGame game) {
@@ -48,7 +47,11 @@ public class Cart {
 
     }
     public double computeTotalPrice(){
-        return  100.500;
+        double tot_price = 0;
+        for (ComputerGame cg:getGames()) {
+            tot_price += cg.getSpec().getPrice();
+        }
+        return  tot_price;
     }
     public boolean ship(){
         return true;
@@ -58,10 +61,12 @@ public class Cart {
 
     @Override
     public String toString() {
-        StringBuilder line = new StringBuilder("");
+        StringBuilder line = new StringBuilder();
+        line.append("Cart: ");
         for (ComputerGame scg : getGames()) {
             line.append(scg.toString()).append("\n");
         }
+        line.append(getDeliveryStrategy().toString()).append("\n").append(getPaymentStrategy().toString()).append("\n");
         return line.toString();
     }
 }
