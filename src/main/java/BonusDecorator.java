@@ -1,22 +1,19 @@
-public class BonusDecorator extends CartDecorator{
+public class BonusDecorator extends CartDecorator {
 
 
-    public BonusDecorator(Cart c){
+    public BonusDecorator(Cart c) {
         super(c);
 
     }
 
     @Override
-    public boolean ship(){
+    public boolean ship() {
         addBonus();
         return getCartToDecorate().ship();
-
-
     }
 
 
-
-    public boolean addBonus(){
+    public boolean addBonus() {
         System.out.println("Add bonus");
         //ArrayList<Genres> ag = new ArrayList<Genres>();
         //ag.add(Genres.SIMULATION);
