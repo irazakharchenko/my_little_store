@@ -34,7 +34,7 @@ public class CartTest {
 
     @Test
     public void computeTotalPrice() throws Exception {
-        assertEquals(20.6,cart1.computeTotalPrice(), 0.01);
+        assertEquals(19.6,cart1.computeTotalPrice(), 0.01);
     }
 
     @Test
