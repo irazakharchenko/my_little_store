@@ -4,15 +4,15 @@ public class CartDecorator extends Cart {
     private Cart cartToDecorate;
 
 
-    private Cart getCartToDecorate() {
+    public Cart getCartToDecorate() {
         return cartToDecorate;
     }
 
-    private void setCartToDecorate(Cart cart) {
+    public void setCartToDecorate(Cart cart) {
         this.cartToDecorate = cart;
     }
 
-    private CartDecorator(Cart c){
+    public CartDecorator(Cart c){
         setCartToDecorate(c);
     }
 
