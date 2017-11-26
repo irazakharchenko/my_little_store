@@ -6,7 +6,7 @@ public class Cart {
     private ArrayList<ComputerGame> games = new ArrayList<ComputerGame>();
     private PaymentStrategy paymentStrategy;
     private DeliveryStrategy deliveryStrategy;
-
+    private Observable observable = new Observable();
 
     public ArrayList<ComputerGame> getGames() {
         return games;
@@ -33,6 +33,11 @@ public class Cart {
         return deliveryStrategy;
     }
 
+    public Observable getObservable() {
+        return observable;
+    }
+
+
     public Cart(){}
 
     public Cart(ArrayList<ComputerGame> games, DeliveryStrategy deliveryStrategy, PaymentStrategy paySt) {
@@ -57,7 +62,17 @@ public class Cart {
         return true;
     }
 
+    public boolean addObserver(Observer ob){
+        return observable.addObserver(ob);
+    }
 
+    public boolean removeObserver(Observer ob){
+        return observable.removeObserver(ob);
+    }
+
+    public boolean notifyObservers(){
+        return observable.notifyObservers();
+    }
 
     @Override
     public String toString() {

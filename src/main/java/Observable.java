@@ -12,8 +12,9 @@ public class Observable {
         this.observers = observers;
     }
 
-    public void addObserver(Observer ob){
+    public boolean addObserver(Observer ob){
         observers.add(ob);
+        return true;
     }
 
     public boolean removeObserver(Observer ob){
