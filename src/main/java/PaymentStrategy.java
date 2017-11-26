@@ -1,3 +1,3 @@
 interface PaymentStrategy {
-    public boolean pay( double moneyHave);
+    boolean pay( double moneyHave);
 }

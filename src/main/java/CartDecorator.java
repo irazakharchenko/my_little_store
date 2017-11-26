@@ -4,15 +4,15 @@ public class CartDecorator extends Cart {
     private Cart cartToDecorate;
 
 
-    public Cart getCartToDecorate() {
+    private Cart getCartToDecorate() {
         return cartToDecorate;
     }
 
-    protected void setCartToDecorate(Cart cart) {
+    private void setCartToDecorate(Cart cart) {
         this.cartToDecorate = cart;
     }
 
-    public CartDecorator(Cart c){
+    private CartDecorator(Cart c){
         setCartToDecorate(c);
     }
 
@@ -40,11 +40,8 @@ public class CartDecorator extends Cart {
     }
     @Override
     public boolean ship(){
-        if (getPaymentStrategy().pay(computeTotalPrice())){
-            getDeliveryStrategy().deliver(getGames());
-            return true;
-        }
-        return false;
+        return (getPaymentStrategy().pay(computeTotalPrice())) && getDeliveryStrategy().deliver(getGames());
+
     }
 
     @Override
