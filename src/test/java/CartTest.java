@@ -11,7 +11,7 @@ public class CartTest {
     private ComputerGameParams cgp, cgp1, cgp2, cgp3;
     private ArrayList<ComputerGame> acg = new ArrayList<>(), acg1 =  new ArrayList<>();
     private ArrayList<Genres> genres = new ArrayList<>(), genres1 = new ArrayList<>();
-    private Observer ob = new User();
+    private Observer ob = new User(), ob1 = new Seller();
     @Before
     public void initializationOfObject(){
 
@@ -23,6 +23,7 @@ public class CartTest {
         cgp1 = new ComputerGameParams("Pony", genres);
         cg1 = new ComputerGame(cgp1);
         cart.addGame(cg1);
+        cart.addObserver(ob);
 
 
     }
@@ -48,5 +49,17 @@ public class CartTest {
     public void addObserver() throws Exception{
         assertEquals(true, cart.addObserver(ob));
     }
+
+    @Test
+    public void notifyObserver() throws Exception{
+        assertEquals(true, cart.notifyObservers());
+    }
+
+    @Test
+    public void removeObserver() throws Exception{
+        assertEquals(true, cart.removeObserver(ob));
+        assertEquals(false, cart.removeObserver(ob1));
+    }
+
 
 }

@@ -18,12 +18,16 @@ public class Observable {
     }
 
     public boolean removeObserver(Observer ob){
-        return observers.remove(ob);
+        if (observers.contains(ob)){
+            return observers.remove(ob);
+        }
+        return false;
     }
 
     public boolean notifyObservers(){
         for(Observer ob : observers){
             System.out.println("Notify observer.");
+            ob.update();
         }
         return true;
     }
