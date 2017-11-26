@@ -24,8 +24,10 @@ public class ComputerGamesParamsTest {
     }
 
 
+
+
     @Test
-    public void testToString(){
+    public void testToString() throws Exception{
 
         assertEquals("ComputerGameParams{name='counter strike', description='interesting game', price=19.6, ageRestrinct=18, genres=[action]}", cgp.toString());
         assertEquals("ComputerGameParams{name='counter strike', description='interesting game', price=19.6, ageRestrinct=18, genres=[action]}", cgp1.toString());

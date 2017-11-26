@@ -11,7 +11,7 @@ public class CartTest {
     private ComputerGameParams cgp, cgp1, cgp2, cgp3;
     private ArrayList<ComputerGame> acg = new ArrayList<>(), acg1 =  new ArrayList<>();
     private ArrayList<Genres> genres = new ArrayList<>(), genres1 = new ArrayList<>();
-    private Observer ob = new User(), ob1 = new Seller();
+    private Observer ob = new Customer(), ob1 = new Seller();
     @Before
     public void initializationOfObject(){
 

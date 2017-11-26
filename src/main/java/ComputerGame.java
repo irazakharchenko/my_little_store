@@ -1,8 +1,8 @@
 
 
 public class ComputerGame {
-    private static int generalId = 0;
-    private static int id = ComputerGame.generalId++;
+
+    private int id;
     private ComputerGameParams params;
 
 
@@ -14,12 +14,14 @@ public class ComputerGame {
         return params;
     }
 
-    public static int getGeneralId() {
-        return generalId;
-    }
 
     public int getId() {
         return id;
+    }
+
+    public ComputerGame setId(int id) {
+        this.id = id;
+        return this;
     }
 
     @Override

@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class ComputerGameBoxTest {
     private ComputerGame cg, cg1, cg2, cg3;
-    private ComputerGameParams cgp, cgp1, cgp2, cgp3;
+    private ComputerGameParams cgp, cgp1, cgp2, cgp3, cgp4;
     private ComputerGameBox cgbox, cgbox2;
 
     @Before
@@ -29,6 +29,7 @@ public class ComputerGameBoxTest {
         cgp3 = new ComputerGameParams("Other", genres1);
         cg3 = new ComputerGame(cgp3);
         cgbox.addGame(cg);
+        cgp4 = new ComputerGameParams("counter Strike", genres);
 
         cgbox.addGame(cg2);
         cgbox2 = new ComputerGameBox(cgbox.getObj());
@@ -47,13 +48,22 @@ public class ComputerGameBoxTest {
 
 
         cgbox2.search(cgp);
-        assertEquals(cgbox.search(cgp1).get(0), cg);
-        assertEquals(cgbox2.search(cgp1).get(0), cg);
-        //assertEquals(cgbox2.search(cgp1), );
+        assertEquals( cg,cgbox.search(cgp1).get(0));
+        assertEquals( cg,cgbox2.search(cgp1).get(0));
+        assertEquals( 0,cgbox2.search(cgp4).size());
+        cgbox.addGame(cg3);
+        cgp2 = new ComputerGameParams("Other","short description1", 12.9, 12, cgp.getGenres());
+        assertEquals(0, cgbox2.search(cgp2).size());
+        cgp2.setDescription("short description");
+        cgp2.setPrice(13.4);
+        assertEquals(0,  cgbox2.search(cgp2).size());
+        cgp2.setPrice(12.9);
+        cgp2.setAgeRestrinct(13);
+        assertEquals(0, cgbox2.search(cgp2).size());
 
 
-        assertEquals(cgbox2.getObj().get(0).getSpec().toString(), "ComputerGameParams{name='counter strike', " +
-                "description='interesting game', price=19.6, ageRestrinct=18, genres=[action, simulation]}");
+        assertEquals("ComputerGameParams{name='counter strike', description='interesting game', price=19.6," +
+                " ageRestrinct=18, genres=[action, simulation]}", cgbox2.getObj().get(0).getSpec().toString());
     }
 
     @Test
